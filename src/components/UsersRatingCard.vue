@@ -14,6 +14,7 @@
             half-increments
             color="#FFB521"
             background-color="transparent"
+            disabled
           ></v-rating>
           <div class="caption">{{ review.comment }}</div>
           <div
@@ -62,6 +63,7 @@ const reviews = ref([
 
 <style scoped lang="scss">
 .container-flex {
+  padding: 30px 5vw;
   @media only screen and (max-width: 900px) {
     display: block;
     white-space: nowrap !important;
@@ -69,6 +71,7 @@ const reviews = ref([
     padding: 10px;
     margin: 0 5vw;
     max-width: 90vw;
+    padding: 10px 30px;
   }
   .container-flex-child {
     display: inline-block;
