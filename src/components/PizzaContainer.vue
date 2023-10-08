@@ -1,24 +1,31 @@
 <template>
   <v-card class="pa-4 container" outlined>
     <div class="title-container">
-      <h2>{{ selectedTaste }}</h2>
-      <v-rating
-        v-model="rating"
-        background-color="transparent"
-        color="yellow"
-        size="24"
-      ></v-rating
-      ><span>42 AVALIAÇÕES</span>
+      <h2 style="font: normal normal normal 32px/40px Bebas Neue">
+        {{ selectedTaste }}
+      </h2>
+      <div style="display: flex; align-items: center; gap: 20px">
+        <v-rating
+          v-model="rating"
+          background-color="transparent"
+          color="#ffb521"
+          size="24"
+        ></v-rating>
+        <span style="color: #ffb521; font-family: 'Bebas Neue'"
+          >42 AVALIAÇÕES</span
+        >
+      </div>
     </div>
-    <p class="mb-4">{{ description }}</p>
+    <p class="mb-1">{{ description }}</p>
     <div class="flex items-center justify-between mb-4">
+      Sabor
       <v-select
         v-model="selectedTaste"
         :items="pizzaTastes"
-        label="Escolha o sabor da pizza"
         outlined
         dense
-        class="white-bg"
+        class="dropdown-tastes"
+        base-color="#ccc"
       ></v-select>
       <div class="flex items-center add-pizzas">
         <v-btn icon @click="decrementQuantity" rounded color="grey">
@@ -29,19 +36,23 @@
           <v-icon>mdi-plus</v-icon>
         </v-btn>
         <div class="subtotal ml-4">
-          Subtotal: R$ {{ calculateSubtotal().toFixed(2) }}
+          <span>Subtotal:&nbsp;</span
+          ><b>R$ {{ calculateSubtotal().toFixed(2) }}</b>
         </div>
       </div>
     </div>
     <div class="orange-button">
-      <v-btn color="orange" dark block> ADICIONAR AO CARRINHO </v-btn>
+      <v-btn color="#ffb521" dark block> ADICIONAR AO CARRINHO </v-btn>
     </div>
     <div class="pizza-items">
       <ul>
-        <li><v-icon color="green">mdi-check</v-icon> Molho de Tomate</li>
-        <li><v-icon color="green">mdi-check</v-icon> Queijo Mussarela</li>
-        <li><v-icon color="green">mdi-check</v-icon> Manjericão Fresco</li>
-        <li><v-icon color="green">mdi-check</v-icon> Azeite de Oliva</li>
+        <li><v-icon color="green">mdi-check</v-icon> Queijos importados</li>
+        <li>
+          <v-icon color="green">mdi-check</v-icon> Catupiry de primeira
+          qualidade
+        </li>
+        <li><v-icon color="green">mdi-check</v-icon> Bastante recheio</li>
+        <li><v-icon color="green">mdi-check</v-icon> Forno à lenha</li>
       </ul>
     </div>
   </v-card>
@@ -82,9 +93,18 @@ const decrementQuantity = () => {
 <style scoped lang="scss">
 .container {
   display: grid;
-  gap: 25px;
+  gap: 30px 20px;
   padding: 20px !important;
-  max-width: 500px;
+  flex: 0.5;
+  align-content: start;
+  min-width: 500px;
+  @media only screen and (max-width: 900px) {
+    max-width: 500px;
+    min-width: 0px;
+    align-self: center;
+    gap: 10px;
+    padding: 5px !important;
+  }
 }
 .title-container {
   display: flex;
@@ -106,22 +126,16 @@ const decrementQuantity = () => {
   color: #ffcc00;
 }
 
-.white-bg {
-  background-color: #fff;
-  border: 1px solid #fff;
-}
-
 /* Removendo borda e sombra padrão do v-card */
 .v-card {
   border: none;
   box-shadow: none;
 }
-
 .add-pizzas {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 30px;
+  padding: 0px 30px;
   button {
     border-radius: 50% !important;
     height: 43px;
@@ -138,7 +152,7 @@ const decrementQuantity = () => {
   }
 }
 .pizza-items {
-  padding: 10px 20px;
+  padding: 0px 20px;
 
   li {
     list-style: none;
@@ -154,7 +168,6 @@ const decrementQuantity = () => {
 }
 .subtotal {
   font-size: 20px;
-  font-weight: bold;
   display: flex;
   align-items: center;
 }

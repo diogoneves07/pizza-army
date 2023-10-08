@@ -1,70 +1,71 @@
 <template>
-  <div style="flex: 1">
-    <v-container fluid>
-      <v-row>
-        <v-col
-          v-for="image in images"
-          :key="image.id"
-          cols="12"
-          sm="4"
-          md="4"
-          lg="6"
-        >
-          <v-img
-            src="@/assets/imagens/pexels-brett-jordan-842519.jpg"
-            :alt="image.tags"
-            class="image-card"
-          >
-          </v-img>
-        </v-col>
-      </v-row>
-    </v-container>
+  <div class="image-mosaic">
+    <div v-for="(image, index) in images" :key="index" class="image-item">
+      <v-img :src="image.src" :alt="image.alt" class="image-card"></v-img>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
-
-const images = ref([]);
-
-// Exemplo de dados simulados para as imagens
-const sampleImages = [
+const images = [
   {
     id: 1,
-    largeImageURL: "https://via.placeholder.com/1000x800", // Tamanho maior
-    tags: "Nature",
+    src: "pexels-narda-yescas-1566837.png",
+    alt: "Nature",
   },
   {
     id: 2,
-    largeImageURL: "@/assets/imagens/pexels-brett-jordan-842519.jpg", // Tamanho maior
-    tags: "City",
+    src: "pexels-brett-jordan-842519.png", // Tamanho maior
+    alt: "City",
   },
   {
     id: 3,
-    largeImageURL: "https://via.placeholder.com/1000x800", // Tamanho maior
-    tags: "Travel",
+    src: "pexels-kristina-paukshtite-1146760.png", // Tamanho maior
+    alt: "Travel",
   },
   {
     id: 3,
-    largeImageURL: "https://via.placeholder.com/1000x800", // Tamanho maior
-    tags: "Travel",
+    src: "pexels-vincent-rivaud-2233348.png", // Tamanho maior
+    alt: "Travel",
   },
-
-  // Adicione mais imagens conforme necessário
-];
-
-onMounted(() => {
-  // Simular o carregamento de imagens (substitua isso por uma chamada à API real)
-  setTimeout(() => {
-    images.value = sampleImages;
-  }, 1000);
+].map((o) => {
+  return {
+    ...o,
+    src: new URL(`/src/assets/imagens/${o.src}`, import.meta.url).toString(),
+  };
 });
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.image-mosaic {
+  display: grid;
+  align-content: start;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 25px;
+  flex: 1;
+  @media only screen and (max-width: 900px) {
+    display: block;
+    white-space: nowrap !important;
+    overflow-x: scroll;
+    padding: 10px;
+    flex: 1;
+    max-width: 90vw;
+
+    .image-item {
+      display: inline-block;
+      width: 200px;
+      margin: 10px;
+    }
+  }
+}
+
+.image-item {
+  flex: 1;
+}
+
 .image-card {
-  object-fit: cover;
-  object-position: top;
-  border-radius: 10px; /* Borda arredondada */
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
 </style>
