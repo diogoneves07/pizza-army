@@ -12,9 +12,9 @@
           size="24"
           disabled
         ></v-rating>
-        <span style="color: #ffb521; font-family: 'Bebas Neue'"
-          >42 AVALIAÇÕES</span
-        >
+        <span style="color: #ffb521; font-family: 'Bebas Neue'">
+          42 AVALIAÇÕES
+        </span>
       </div>
     </div>
     <p class="mb-1">{{ description }}</p>

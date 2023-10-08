@@ -57,6 +57,8 @@
           <MosaicContainer></MosaicContainer>
           <PizzaContainer></PizzaContainer>
         </div>
+        <AnimatedElements></AnimatedElements>
+
         <UsersRatingCard></UsersRatingCard>
       </v-main>
     </div>
@@ -68,6 +70,7 @@ import { ref, onMounted, onBeforeUnmount } from "vue";
 import PizzaContainer from "@/components/PizzaContainer.vue";
 import MosaicContainer from "@/components/MosaicContainer.vue";
 import UsersRatingCard from "@/components/UsersRatingCard.vue";
+import AnimatedElements from "@/components/AnimatedElements.vue";
 
 const drawer = ref(false);
 const isScreenSmall = ref(false);

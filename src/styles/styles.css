@@ -1,11 +1,12 @@
-/* src/assets/styles.css */
 
-/* Estilo global para o corpo do documento */
 * {
     font-family: 'Roboto', sans-serif;
   }
   
-  /* Estilo global para os títulos h1 */
+  body{
+    margin-bottom: 100px;
+  }
+  
   h1 {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 2rem;
