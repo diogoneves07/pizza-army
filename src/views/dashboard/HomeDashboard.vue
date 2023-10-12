@@ -8,7 +8,7 @@
       v-model="tab"
       color="#1F6D29"
       slider-color="#1F6D29"
-      align-tabs="start"
+      align-tabs="center"
       style="
         background-color: rgba(254, 254, 254, 0.6);
         border-radius: 10px 10px 0px 0px;
@@ -52,50 +52,7 @@
           height: 500px;
         "
       >
-        <v-form
-          @submit.prevent="addProduct"
-          style="
-            display: grid;
-            padding: 10px 30px 10px 30px;
-            gap: 25px;
-            text-align: center;
-          "
-        >
-          <v-text-field
-            v-model="newProduct.name"
-            label="Nome"
-            required
-          ></v-text-field>
-          <v-text-field
-            v-model="newProduct.price"
-            label="Preço"
-            type="number"
-            required
-          ></v-text-field>
-          <v-text-field
-            v-model="newProduct.description"
-            label="Descrição"
-            required
-          ></v-text-field>
-
-          <div style="text-align: center" v-if="isSubmitting">
-            <v-progress-circular
-              indeterminate
-              color="primary"
-            ></v-progress-circular>
-          </div>
-
-          <div v-if="successMessage" style="color: #1f6d29">
-            {{ successMessage }}
-          </div>
-          <div v-if="errorMessage" style="color: rgb(205, 1, 1)">
-            {{ errorMessage }}
-          </div>
-
-          <v-btn :disabled="isSubmitting" type="submit" color="primary"
-            >Adicionar Produto</v-btn
-          >
-        </v-form>
+        <AddProduct :on-product-added="handleOnProductAdded"></AddProduct>
       </v-window-item>
     </v-window>
   </div>
@@ -104,16 +61,17 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 
-interface Product {
-  id: string;
-  name: string;
-  price: string;
-  description: string;
-}
+import AddProduct from "./_AddProduct.vue";
+import { Product } from "@/types/product";
 
 const products = ref<Product[]>([]);
 const tab = ref(1);
-const loadProducts = async () => {
+
+function handleOnProductAdded(p: Product) {
+  products.value.push(p);
+}
+
+async function loadProducts() {
   try {
     const response = await fetch("/api/produtos");
     if (response.ok) {
@@ -125,9 +83,9 @@ const loadProducts = async () => {
   } catch (error) {
     console.error("Erro ao buscar produtos:", error);
   }
-};
+}
 
-const removeProduct = async (productId: string) => {
+async function removeProduct(productId: string) {
   try {
     const response = await fetch(`/api/produtos/${productId}`, {
       method: "DELETE",
@@ -142,59 +100,7 @@ const removeProduct = async (productId: string) => {
   } catch (error) {
     console.error("Erro ao remover o produto:", error);
   }
-};
-
-const newProduct = ref<Product>({
-  id: "",
-  name: "",
-  price: "",
-  description: "",
-});
-
-const isSubmitting = ref(false);
-const successMessage = ref("");
-const errorMessage = ref("");
-
-const addProduct = async () => {
-  if (newProduct.value.name && newProduct.value.price) {
-    isSubmitting.value = true;
-
-    try {
-      const response = await fetch("/api/produtos", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newProduct.value),
-      });
-      if (response.ok) {
-        const data = await response.json();
-        products.value.push(data);
-        newProduct.value = {
-          id: "",
-          name: "",
-          price: "",
-          description: "",
-        };
-        isSubmitting.value = false;
-        successMessage.value = "Produto adicionado com sucesso!";
-        errorMessage.value = "";
-      } else {
-        isSubmitting.value = false;
-        successMessage.value = "";
-        errorMessage.value = "Erro ao adicionar o produto.";
-      }
-    } catch (error) {
-      isSubmitting.value = false;
-      successMessage.value = "";
-      errorMessage.value = "Erro ao adicionar o produto.";
-    }
-  } else {
-    isSubmitting.value = false;
-    successMessage.value = "";
-    errorMessage.value = "Por favor, preencha o nome e o preço do produto.";
-  }
-};
+}
 
 onMounted(() => {
   loadProducts();

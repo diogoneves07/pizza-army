@@ -2,7 +2,7 @@
   <v-card class="pa-4 container" outlined>
     <div class="title-container">
       <h2 style="font: normal normal normal 32px/40px Bebas Neue">
-        {{ selectedTaste }}
+        {{ selected?.name || "" }}
       </h2>
       <div style="display: flex; align-items: center; gap: 20px">
         <v-rating
@@ -21,8 +21,10 @@
     <div class="flex items-center justify-between mb-4">
       Sabor
       <v-select
-        v-model="selectedTaste"
+        v-model="selectedId"
         :items="pizzaTastes"
+        item-title="name"
+        item-value="id"
         outlined
         dense
         class="dropdown-tastes"
@@ -60,20 +62,54 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted, watch } from "vue";
 import { ref } from "vue";
+import { Product } from "@/types/product";
+import { useRouter, useRoute } from "vue-router";
 
-const selectedTaste = ref("Margherita");
+const router = useRouter();
+const route = useRoute();
+
+const selectedId = ref("");
+const selected = ref<Product | null>(null);
+
 const rating = ref(4);
 const description = ref(
   "Uma pizza clássica italiana com molho de tomate, queijo mussarela, manjericão fresco e azeite de oliva."
 );
-const pizzaTastes = ref([
-  "Margherita",
-  "Pepperoni",
-  "Havaiana",
-  "Quatro Queijos",
-  "Calabresa",
-]);
+
+const pizzaTastes = ref<Product[]>([]);
+
+watch(selectedId, () => {
+  selected.value = pizzaTastes.value.find(
+    (p) => p.id === selectedId.value
+  ) as Product;
+  router.push("/" + selectedId.value);
+});
+async function loadProducts() {
+  try {
+    const response = await fetch("/api/produtos");
+    if (response.ok) {
+      const data = await response.json();
+      pizzaTastes.value = data as Product[];
+
+      if (route.params.id) {
+        selected.value =
+          pizzaTastes.value.find((p) => p.id === route.params.id) || null;
+
+        selectedId.value = selected?.value?.id || "";
+      }
+      if (!selected.value) {
+        selected.value = pizzaTastes.value[0];
+        selectedId.value = selected.value.id;
+      }
+    } else {
+      console.error("Erro ao buscar produtos:", response.statusText);
+    }
+  } catch (error) {
+    console.error("Erro ao buscar produtos:", error);
+  }
+}
 const quantity = ref(1);
 
 const calculateSubtotal = () => {
@@ -89,6 +125,10 @@ const decrementQuantity = () => {
     quantity.value -= 1;
   }
 };
+
+onMounted(() => {
+  loadProducts();
+});
 </script>
 
 <style scoped lang="scss">
