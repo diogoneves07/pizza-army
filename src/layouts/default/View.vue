@@ -6,7 +6,7 @@
           <MosaicContainer></MosaicContainer>
           <PizzaContainer></PizzaContainer>
         </div>
-        <AnimatedElements></AnimatedElements>
+        <MainPizzaAnimation></MainPizzaAnimation>
         <UsersRatingCard></UsersRatingCard>
       </v-main>
     </div>
@@ -14,12 +14,10 @@
 </template>
 
 <script setup lang="ts">
-import AppBar from "./AppBar.vue";
-
 import PizzaContainer from "@/components/PizzaContainer.vue";
 import MosaicContainer from "@/components/MosaicContainer.vue";
 import UsersRatingCard from "@/components/UsersRatingCard.vue";
-import AnimatedElements from "@/components/AnimatedElements.vue";
+import MainPizzaAnimation from "@/components/MainPizzaAnimation.vue";
 </script>
 
 <style scoped lang="scss">
