@@ -15,7 +15,7 @@ npm run setup
 Ou
 
 ```
-npm i // Na raiz do projeto
+npm i
 ```
 
 e
@@ -29,7 +29,7 @@ npm i
 ```
 
 ```
-npm i // Na raiz do projeto
+npm i
 ```
 
 ## Executando
@@ -37,13 +37,13 @@ npm i // Na raiz do projeto
 Abra um terminal e execute:
 
 ```
-npm run dev // Na raiz do projeto
+npm run dev
 ```
 
 Abra outro terminal e execute:
 
 ```
-npm run api // Na raiz do projeto
+npm run api
 ```
 
 ## Páginas
