@@ -50,8 +50,8 @@
       </div>
     </div>
     <div class="pizza-container">
-      <div class="pizza-text" ref="pizzaText" style="opacity: 0">
-        <v-card class="pizza-text-card" flat>
+      <div class="pizza-text" ref="pizzaText">
+        <v-card class="pizza-text-card animation-pizza-text" flat>
           <strong class="pizza-text-card-title">
             DESCUBRA O SABOR DA TRADIÇÃO
           </strong>
@@ -70,12 +70,8 @@
       Ingredient"
         />
       </div>
-      <div
-        class="pizza-ingredient-main-list"
-        ref="pizzaIngredientMainList"
-        style="opacity: 0; width: 600px"
-      >
-        <v-list style="position: relative; left: -170px; top: -30px">
+      <div class="pizza-ingredient-main-list" ref="pizzaIngredientMainList">
+        <v-list class="list">
           <v-list-item>
             <v-list-item-title class="headline mb-3 pizza-item">
               <img src="@/assets/imagens/local_pizza_black_24dp.png" />
@@ -115,9 +111,7 @@
       </div>
     </div>
     <div ref="ingredientsRightSide">
-      <div
-        style="display: flex; margin-top: 30px; justify-content: space-between"
-      >
+      <div>
         <img
           src="@/assets/imagens/ingrediente (11).png"
           alt="Pizza Ingredient"
@@ -129,9 +123,7 @@
           style="top: 0px; right: 100px"
         />
       </div>
-      <div
-        style="display: flex; justify-content: space-between; margin-top: 100px"
-      >
+      <div>
         <img
           src="@/assets/imagens/ingrediente (10).png"
           alt="Pizza Ingredient"
@@ -143,9 +135,7 @@
           style="height: 50px; top: 220px; right: 100px"
         />
       </div>
-      <div
-        style="display: flex; justify-content: space-around; margin-top: 50px"
-      >
+      <div>
         <img
           src="@/assets/imagens/ingrediente (1).png"
           alt="Pizza Ingredient"
@@ -227,6 +217,8 @@ function handleIntersection(
 
         setTimeout(() => {
           if (pizzaIngredientMainList.value && pizzaText.value) {
+            pizzaText.value.style.width = "";
+            pizzaIngredientMainList.value.style.width = "";
             pizzaText.value.style.opacity = "1";
             pizzaIngredientMainList.value.style.opacity = "1";
           }
@@ -262,8 +254,8 @@ onMounted(() => {
   @media only screen and (max-width: 900px) {
     padding: 1%;
     justify-content: center;
+    display: none;
 
-    display: flex;
     overflow: visible;
     height: 180vh;
 
@@ -348,6 +340,16 @@ onMounted(() => {
 .pizza-ingredient-main-list,
 .pizza-text {
   transition: all 3s;
+  opacity: 0;
+}
+
+.pizza-ingredient-main-list {
+  width: 600px;
+  .list {
+    position: relative;
+    left: -170px;
+    top: -30px;
+  }
 }
 
 .pizza-container {

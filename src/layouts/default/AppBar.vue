@@ -72,6 +72,10 @@ onBeforeUnmount(() => {
   border-radius: 5px;
   position: relative;
   left: 20px;
+  @media only screen and (max-width: 900px) {
+    position: relative;
+    left: -5px;
+  }
 }
 .toolbar {
   color: #1f6d29;

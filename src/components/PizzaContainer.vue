@@ -181,6 +181,9 @@ onMounted(() => {
   align-items: center;
   gap: 10px;
   padding: 0px 30px;
+  @media only screen and (max-width: 900px) {
+    padding: 0px 10px;
+  }
   button {
     border-radius: 50% !important;
     height: 43px;
