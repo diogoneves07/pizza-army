@@ -1,76 +1,68 @@
 <template>
-  <v-app>
-    <v-app-bar app class="v-app-bar--shadow" style="padding: 10px 15px">
-      <v-btn
-        v-if="!isScreenSmall"
-        icon
-        @click="toggleDrawer"
-        style="border-radius: 5px; position: relative; left: 60px"
-        class="btn"
+  <v-app-bar app class="v-app-bar--shadow" style="padding: 10px 15px">
+    <v-btn
+      v-if="!isScreenSmall"
+      icon
+      @click="toggleDrawer"
+      style="border-radius: 5px; width: 120px"
+      class="btn"
+    >
+      <span
+        class="mr-2"
+        style="font-size: 16px; font-weight: 500; text-transform: none"
+        >Comprar</span
       >
-        <span
-          class="mr-2"
-          style="font-size: 16px; font-weight: 500; text-transform: none"
-          >Comprar</span
-        >
-        <v-icon>mdi-chevron-down</v-icon>
-      </v-btn>
-      <v-btn
-        v-else
-        icon
-        style="border-radius: 5px; position: relative; left: 20px"
-        class="btn"
-      >
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
-      <v-toolbar-title
-        class="text-center flex-grow-1"
+      <v-icon>mdi-chevron-down</v-icon>
+    </v-btn>
+    <v-btn
+      v-else
+      icon
+      style="border-radius: 5px; position: relative; left: 20px"
+      class="btn"
+    >
+      <v-icon>mdi-menu</v-icon>
+    </v-btn>
+    <v-toolbar-title
+      class="text-center flex-grow-1"
+      style="
+        color: #1f6d29;
+        font-size: 24px;
+        font-weight: 500;
+        text-transform: uppercase;
+      "
+    >
+      <span
         style="
-          color: #1f6d29;
-          font-size: 24px;
-          font-weight: 500;
-          text-transform: uppercase; ;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
         "
       >
-        Pizza Army
-      </v-toolbar-title>
-      <div class="d-flex align-center">
-        <span
-          v-if="!isScreenSmall"
-          class="mr-7"
-          style="position: relative; left: -40px"
-        >
-          A segunda pizza com
-          <strong style="color: #1f6d29">20% OFF</strong>
-        </span>
-        <v-btn icon class="btn">
-          <v-icon>mdi-account-circle</v-icon>
-        </v-btn>
-        <v-btn icon class="btn">
-          <v-icon>mdi-cart</v-icon>
-        </v-btn>
-      </div>
-    </v-app-bar>
-    <div class="all-center">
-      <v-main class="all-center-main">
-        <div class="products">
-          <MosaicContainer></MosaicContainer>
-          <PizzaContainer></PizzaContainer>
-        </div>
-        <AnimatedElements></AnimatedElements>
-
-        <UsersRatingCard></UsersRatingCard>
-      </v-main>
+        Pizza Army</span
+      >
+    </v-toolbar-title>
+    <div class="d-flex align-center">
+      <span
+        v-if="!isScreenSmall"
+        class="mr-7"
+        style="position: relative; left: -40px"
+      >
+        A segunda pizza com
+        <strong style="color: #1f6d29">20% OFF</strong>
+      </span>
+      <v-btn icon class="btn">
+        <v-icon>mdi-account-circle</v-icon>
+      </v-btn>
+      <v-btn icon class="btn">
+        <v-icon>mdi-cart</v-icon>
+      </v-btn>
     </div>
-  </v-app>
+  </v-app-bar>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from "vue";
-import PizzaContainer from "@/components/PizzaContainer.vue";
-import MosaicContainer from "@/components/MosaicContainer.vue";
-import UsersRatingCard from "@/components/UsersRatingCard.vue";
-import AnimatedElements from "@/components/AnimatedElements.vue";
 
 const drawer = ref(false);
 const isScreenSmall = ref(false);
@@ -107,16 +99,7 @@ onBeforeUnmount(() => {
     align-items: center;
   }
 }
-.all-center {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  align-content: start;
-  .all-center-main {
-    flex: 1;
-    max-width: 2000px;
-  }
-}
+
 /* Adicione uma sombra na parte inferior */
 .v-app-bar--shadow {
   box-shadow: none !important;

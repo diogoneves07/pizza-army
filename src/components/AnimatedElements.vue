@@ -5,7 +5,7 @@
         <img
           src="@/assets/imagens/ingrediente (18).png"
           alt="Pizza Ingredient"
-          style="top: 10vh; left: 10vw"
+          style="top: 0px; left: 80px"
         />
       </div>
       <div
@@ -14,17 +14,17 @@
         <img
           src="@/assets/imagens/ingrediente (17).png"
           alt="Pizza Ingredient"
-          style="top: 35vh; left: 3vw"
+          style="top: 220px; left: 20px"
         />
         <img
           src="@/assets/imagens/ingrediente (16).png"
           alt="Pizza Ingredient"
-          style="top: 40vh; left: 12vw"
+          style="top: 260px; left: 180px"
         />
         <img
           src="@/assets/imagens/ingrediente (19).png"
           alt="Pizza Ingredient"
-          style="top: 35vh; left: 25vw"
+          style="top: 220px; left: 340px"
         />
       </div>
       <div
@@ -33,30 +33,82 @@
         <img
           src="@/assets/imagens/ingrediente (20).png"
           alt="Pizza Ingredient"
-          style="top: 60vh; left: 10vw"
+          style="top: 420px; left: 120px"
         />
         <img
           src="@/assets/imagens/ingrediente (15).png"
           alt="Pizza Ingredient"
-          style="top: 60vh; left: 22vw"
+          style="top: 420px; left: 320px"
         />
       </div>
       <div style="display: flex; justify-content: end; margin-top: 50px">
         <img
           src="@/assets/imagens/ingrediente (14).png"
           alt="Pizza Ingredient"
-          style="top: 70vh; left: 20vw"
+          style="top: 520px; left: 290px"
         />
       </div>
     </div>
-    <div style="display: flex; justify-content: center; align-items: center">
-      <img
-        ref="pizzaImg"
-        class="pizza-img"
-        src="@/assets/imagens/pngegg (7).png"
-        alt="Pizza
+    <div class="pizza-container">
+      <div class="pizza-text" ref="pizzaText" style="opacity: 0">
+        <v-card class="pizza-text-card" flat>
+          <strong class="pizza-text-card-title">
+            DESCUBRA O SABOR DA TRADIÇÃO
+          </strong>
+          <p class="pizza-text-desc">
+            Com receitas transmitidas à gerações, ingredientes selecionados e
+            forno a lenha, garantimos uma experiência gastronômica memorável.
+          </p>
+        </v-card>
+      </div>
+      <div style="width: 350px">
+        <img
+          ref="pizzaImg"
+          class="pizza-img"
+          src="@/assets/imagens/pngegg (7).png"
+          alt="Pizza
       Ingredient"
-      />
+        />
+      </div>
+      <div
+        class="pizza-ingredient-main-list"
+        ref="pizzaIngredientMainList"
+        style="opacity: 0; width: 600px"
+      >
+        <v-list style="position: relative; left: -170px; top: -30px">
+          <v-list-item>
+            <v-list-item-title class="headline mb-3 pizza-item">
+              <v-icon color="primary">mdi-pizza</v-icon>
+              Queijos importados</v-list-item-title
+            >
+            <v-divider></v-divider>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-title class="headline mb-3 pizza-item">
+              <v-icon color="primary">mdi-pizza</v-icon>
+              Catupiry de primeira qualidade</v-list-item-title
+            >
+            <v-divider></v-divider>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-title class="headline mb-3 pizza-item">
+              <v-icon color="primary">mdi-pizza</v-icon>
+              Bastante recheio</v-list-item-title
+            >
+            <v-divider></v-divider>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-title class="headline mb-3 pizza-item">
+              <v-icon color="primary">mdi-pizza</v-icon>
+              Forno à lenha</v-list-item-title
+            >
+            <v-divider></v-divider>
+          </v-list-item>
+        </v-list>
+      </div>
     </div>
     <div ref="ingredientsRightSide">
       <div
@@ -65,12 +117,12 @@
         <img
           src="@/assets/imagens/ingrediente (11).png"
           alt="Pizza Ingredient"
-          style="top: 15vh; left: 65vw"
+          style="top: 50px; right: 350px"
         />
         <img
           src="@/assets/imagens/ingrediente (12).png"
           alt="Pizza Ingredient"
-          style="top: 10vh; left: 85vw"
+          style="top: 0px; right: 100px"
         />
       </div>
       <div
@@ -79,12 +131,12 @@
         <img
           src="@/assets/imagens/ingrediente (10).png"
           alt="Pizza Ingredient"
-          style="height: 200px; max-height: 400px; top: 30vh; left: 70vw"
+          style="height: 200px; max-height: 400px; top: 200px; right: 200px"
         />
         <img
           src="@/assets/imagens/ingrediente (13).png"
           alt="Pizza Ingredient"
-          style="height: 50px; top: 30vh; left: 90vw"
+          style="height: 50px; top: 220px; right: 100px"
         />
       </div>
       <div
@@ -93,18 +145,18 @@
         <img
           src="@/assets/imagens/ingrediente (1).png"
           alt="Pizza Ingredient"
-          style="height: 150px; max-height: 400px; top: 60vh; left: 65vw"
+          style="height: 150px; max-height: 400px; top: 430px; right: 340px"
         />
         <div>
           <img
             src="@/assets/imagens/ingrediente (8).png"
             alt="Pizza Ingredient"
-            style="top: 58vh; left: 80vw"
+            style="top: 430px; right: 120px"
           />
           <img
             src="@/assets/imagens/ingrediente (9).png"
             alt="Pizza Ingredient"
-            style="top: 50vh; left: 85vw"
+            style="top: 360px; right: 60px"
           />
         </div>
       </div>
@@ -119,11 +171,34 @@ let ingredientsLeftSide = ref<HTMLDivElement | null>(null);
 let ingredientsRightSide = ref<HTMLDivElement | null>(null);
 let pizzaImg = ref<HTMLImageElement | null>(null);
 let animationContainer = ref<HTMLDivElement | null>(null);
+let pizzaIngredientMainList = ref<HTMLDivElement | null>(null);
+let pizzaText = ref<HTMLDivElement | null>(null);
 
-function moveElemensToThePizza(element: HTMLDivElement) {
-  for (const el of Array.from(element.getElementsByTagName("img"))) {
-    el.classList.add("center-element");
-  }
+function moveImagesToPizza(
+  imgs: HTMLImageElement[] | HTMLCollectionOf<HTMLImageElement>
+) {
+  const pizzaElement = pizzaImg.value;
+  const pizzaPosition = pizzaElement
+    ? pizzaElement.getBoundingClientRect()
+    : null;
+
+  if (!pizzaPosition) return;
+
+  const pizzaCenterX = pizzaPosition.left + pizzaPosition.width / 2;
+  const pizzaCenterY = pizzaPosition.top + pizzaPosition.height / 2;
+
+  // Move cada imagem em direção ao centro da pizza
+  Array.from(imgs).forEach((image) => {
+    const imagePosition = image.getBoundingClientRect();
+    const imageCenterX = imagePosition.left + imagePosition.width / 2;
+    const imageCenterY = imagePosition.top + imagePosition.height / 2;
+
+    const translateX = pizzaCenterX - imageCenterX;
+    const translateY = pizzaCenterY - imageCenterY;
+    image.style.transition = "1s all";
+    image.style.opacity = "0";
+    image.style.transform = ` translate(${translateX}px, ${translateY}px)`;
+  });
 }
 
 function handleIntersection(
@@ -138,10 +213,20 @@ function handleIntersection(
         ingredientsRightSide.value &&
         pizzaImg.value
       ) {
-        moveElemensToThePizza(ingredientsLeftSide.value);
-        moveElemensToThePizza(ingredientsRightSide.value);
+        moveImagesToPizza(
+          ingredientsLeftSide.value.getElementsByTagName("img")
+        );
+        moveImagesToPizza(
+          ingredientsRightSide.value.getElementsByTagName("img")
+        );
         pizzaImg.value.classList.add("pizza");
-        console.log(animationContainer.value);
+
+        setTimeout(() => {
+          if (pizzaIngredientMainList.value && pizzaText.value) {
+            pizzaText.value.style.opacity = "1";
+            pizzaIngredientMainList.value.style.opacity = "1";
+          }
+        }, 1000);
       }
     }
   });
@@ -150,7 +235,7 @@ function handleIntersection(
 onMounted(() => {
   const observer = new IntersectionObserver(handleIntersection, {
     root: null,
-    threshold: 0.6,
+    threshold: 0.9,
   });
 
   if (animationContainer.value) {
@@ -162,10 +247,11 @@ onMounted(() => {
 <style scoped lang="scss">
 .container {
   padding: 5%;
+  margin-top: 100px;
   display: flex;
   justify-content: space-between;
   position: relative;
-  height: 120vh;
+  height: 550px;
   img {
     max-height: 138px;
   }
@@ -178,7 +264,7 @@ onMounted(() => {
     height: 180vh;
 
     img {
-      max-height: 80px;
+      max-height: 50px;
     }
   }
   > div {
@@ -190,32 +276,35 @@ onMounted(() => {
 }
 
 .pizza-img {
-  height: 340px !important;
-  max-height: 500px !important;
-  top: 35vh;
+  height: 400px;
+  max-height: unset !important;
+  z-index: 99999999;
+  position: relative !important;
+  left: -100px;
+
   @media only screen and (max-width: 900px) {
     max-height: 250px !important;
-    top: 100vh;
   }
 }
 .center-element {
   transition: transform 3s ease;
-  animation: centerAnimation 1.5s ease-in-out forwards;
 }
 
 @keyframes centerAnimation {
   100% {
-    top: 80%;
+    top: 30vh;
     left: 50%;
-    transform: translate(-80%, -50%);
+    transform: translate(-50%, 30vh);
     opacity: 0;
   }
 }
 
 @keyframes pizzaAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
   100% {
-    top: 50vh;
-    transform: rotate(180deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -225,6 +314,51 @@ onMounted(() => {
 
 .pizza {
   animation: pizzaAnimation 1.5s ease-in-out forwards;
-  z-index: 99999999;
+}
+
+.pizza-text-card {
+  margin: 0 auto;
+  padding: 0px;
+  text-align: left;
+  font-family: "Bebas Neue";
+  width: 500px;
+  font-size: 16px !important;
+}
+
+.pizza-text-card-title {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+  text-overflow: unset !important;
+  word-wrap: break-word;
+  display: inline-block;
+  width: 100%;
+  line-height: 50px;
+  width: 450px;
+}
+.pizza-text-desc {
+  width: 300px;
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+
+.pizza-ingredient-main-list,
+.pizza-text {
+  transition: all 3s;
+}
+
+.pizza-container {
+  display: flex;
+
+  align-items: start;
+  align-content: start;
+  width: 100vw;
+
+  @media only screen and (max-width: 900px) {
+    flex-direction: column;
+  }
+}
+.pizza-item {
+  margin-top: 30px;
+  padding: 10px 150px;
 }
 </style>
