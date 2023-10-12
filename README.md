@@ -28,10 +28,6 @@ cd .\simple-api\
 npm i
 ```
 
-```
-npm i
-```
-
 ## Executando
 
 Abra um terminal e execute:
