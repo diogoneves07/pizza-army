@@ -1,10 +1,10 @@
 <template>
   <v-card class="pa-4 container" outlined>
     <div class="title-container">
-      <h2 style="font: normal normal normal 32px/40px Bebas Neue">
+      <h2>
         {{ tasteSelected?.name || "" }}
       </h2>
-      <div style="display: flex; align-items: center; gap: 20px">
+      <div class="pizza-rating">
         <v-rating
           v-model="rating"
           background-color="transparent"
@@ -12,9 +12,7 @@
           size="24"
           disabled
         ></v-rating>
-        <span style="color: #ffb521; font-family: 'Bebas Neue'">
-          42 AVALIAÇÕES
-        </span>
+        <span> 42 AVALIAÇÕES </span>
       </div>
     </div>
     <p class="mb-1">{{ tasteSelected?.description || "" }}</p>
@@ -67,6 +65,11 @@ import { ref } from "vue";
 import { Product } from "@/types/product";
 import { useRouter, useRoute } from "vue-router";
 
+/**
+ * ! O preço do  deve ser utilizado com base nas informações de cada produto!
+ */
+const CUSTO_DA_PIZZA = 89.9;
+
 const router = useRouter();
 const route = useRoute();
 
@@ -111,7 +114,7 @@ async function loadProducts() {
 const quantity = ref(1);
 
 function calculateSubtotal() {
-  return quantity.value * 89.9; // Custo de cada pizza
+  return quantity.value * CUSTO_DA_PIZZA;
 }
 
 function incrementQuantity() {
@@ -149,6 +152,9 @@ onMounted(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  h2 {
+    font: normal normal normal 32px/40px Bebas Neue;
+  }
 }
 
 .star-rating {
@@ -209,5 +215,15 @@ onMounted(() => {
   font-size: 20px;
   display: flex;
   align-items: center;
+}
+
+.pizza-rating {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  span {
+    color: #ffb521;
+    font-family: "Bebas Neue";
+  }
 }
 </style>

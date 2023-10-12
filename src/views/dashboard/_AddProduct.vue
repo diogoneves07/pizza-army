@@ -51,7 +51,7 @@ const isSubmitting = ref(false);
 const successMessage = ref("");
 const errorMessage = ref("");
 
-const addProduct = async () => {
+async function addProduct() {
   if (
     !newProduct.value.name ||
     !newProduct.value.price ||
@@ -95,7 +95,7 @@ const addProduct = async () => {
     successMessage.value = "";
     errorMessage.value = "Erro ao adicionar o produto.";
   }
-};
+}
 </script>
 
 <style scoped lang="scss">

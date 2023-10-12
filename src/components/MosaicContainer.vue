@@ -15,17 +15,17 @@ const images = [
   },
   {
     id: 2,
-    src: "pexels-brett-jordan-842519.png", // Tamanho maior
+    src: "pexels-brett-jordan-842519.png",
     alt: "City",
   },
   {
     id: 3,
-    src: "pexels-kristina-paukshtite-1146760.png", // Tamanho maior
+    src: "pexels-kristina-paukshtite-1146760.png",
     alt: "Travel",
   },
   {
     id: 3,
-    src: "pexels-vincent-rivaud-2233348.png", // Tamanho maior
+    src: "pexels-vincent-rivaud-2233348.png",
     alt: "Travel",
   },
 ].map((o) => {

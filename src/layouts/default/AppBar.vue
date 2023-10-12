@@ -1,57 +1,22 @@
 <template>
-  <v-app-bar
-    app
-    class="v-app-bar--shadow"
-    style="padding: 10px 15px; position: relative"
-  >
+  <v-app-bar app class="v-app-bar--shadow app-bar">
     <v-btn
       v-if="!isScreenSmall"
       icon
       @click="toggleDrawer"
-      style="border-radius: 5px; width: 120px"
-      class="btn"
+      class="btn menu-btn"
     >
-      <span
-        class="mr-2"
-        style="font-size: 16px; font-weight: 500; text-transform: none"
-        >Comprar</span
-      >
+      <span class="mr-2">Comprar</span>
       <v-icon>mdi-chevron-down</v-icon>
     </v-btn>
-    <v-btn
-      v-else
-      icon
-      style="border-radius: 5px; position: relative; left: 20px"
-      class="btn"
-    >
+    <v-btn v-else icon class="btn menu-btn-buguer">
       <v-icon>mdi-menu</v-icon>
     </v-btn>
-    <v-toolbar-title
-      class="text-center flex-grow-1"
-      style="
-        color: #1f6d29;
-        font-size: 24px;
-        font-weight: 500;
-        text-transform: uppercase;
-      "
-    >
-      <span
-        style="
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          transform: translate(-50%, -50%);
-        "
-      >
-        Pizza Army</span
-      >
+    <v-toolbar-title class="text-center flex-grow-1 toolbar">
+      <span class="oo"> Pizza Army</span>
     </v-toolbar-title>
     <div class="d-flex align-center">
-      <span
-        v-if="!isScreenSmall"
-        class="mr-7"
-        style="position: relative; left: -40px"
-      >
+      <span v-if="!isScreenSmall" class="mr-7 promotion">
         A segunda pizza com
         <strong style="color: #1f6d29">20% OFF</strong>
       </span>
@@ -71,9 +36,9 @@ import { ref, onMounted, onBeforeUnmount } from "vue";
 const drawer = ref(false);
 const isScreenSmall = ref(false);
 
-const handleResize = () => {
+function handleResize() {
   isScreenSmall.value = window.matchMedia("(max-width: 900px)").matches;
-};
+}
 
 function toggleDrawer() {
   drawer.value = !drawer.value;
@@ -90,6 +55,41 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped lang="scss">
+.app-bar {
+  padding: 10px 15px;
+  position: relative !important;
+}
+.menu-btn {
+  border-radius: 5px !important;
+  width: 120px !important;
+  span {
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: none;
+  }
+}
+.menu-btn-buguer {
+  border-radius: 5px;
+  position: relative;
+  left: 20px;
+}
+.toolbar {
+  color: #1f6d29;
+  font-size: 24px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.promotion {
+  position: relative;
+  left: -40px;
+}
 .products {
   display: flex;
   gap: 30px;
@@ -104,19 +104,16 @@ onBeforeUnmount(() => {
   }
 }
 
-/* Adicione uma sombra na parte inferior */
 .v-app-bar--shadow {
   box-shadow: none !important;
 }
 
-/* Estilo para botão quadrado */
 .v-btn--square:not(.v-btn--disabled):not(.v-btn--text):not(.v-btn--fab) {
   border-radius: 0;
   padding-left: 16px;
   padding-right: 16px;
 }
 
-/* Ajuste o posicionamento dos elementos */
 .v-toolbar__title {
   flex-grow: 1;
 }

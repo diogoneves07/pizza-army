@@ -17,16 +17,7 @@
             disabled
           ></v-rating>
           <div class="caption">{{ review.comment }}</div>
-          <div
-            class="subheading font-weight-bold"
-            style="
-              display: flex;
-              gap: 30px 10px;
-              justify-content: center;
-              align-items: center;
-              margin-top: 20px;
-            "
-          >
+          <div class="subheading font-weight-bold comments">
             <img src="@/assets/imagens/verified_black_24dp (2).png" />
             {{ review.customerName }}
           </div>
@@ -36,7 +27,7 @@
   </v-row>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue";
 
 const reviews = ref([
@@ -58,7 +49,7 @@ const reviews = ref([
       "Pizza incrível. Queijo de qualidade, bem recheada e crocante. Vou pedir mais e indicar pra todo mundo, com certeza!",
     customerName: "Pedro Almeida",
   },
-]); // Dados das avaliações dos clientes.
+]);
 </script>
 
 <style scoped lang="scss">
@@ -90,6 +81,13 @@ const reviews = ref([
 
 .subheading {
   font-size: 16px;
-  font-weight: bold; /* Adicionando negrito */
+  font-weight: bold;
+}
+.comments {
+  display: flex;
+  gap: 30px 10px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 </style>

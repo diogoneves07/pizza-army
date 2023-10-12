@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <div class="all-center">
-      <v-main class="all-center-main">
+    <div class="center-content">
+      <v-main class="center-content-size">
         <div class="products">
           <MosaicContainer></MosaicContainer>
           <PizzaContainer></PizzaContainer>
@@ -34,29 +34,26 @@ import MainPizzaAnimation from "@/components/MainPizzaAnimation.vue";
     align-items: center;
   }
 }
-.all-center {
+.center-content {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
   align-content: start;
-  .all-center-main {
+  .center-content-size {
     flex: 1;
     max-width: 2000px;
   }
 }
-/* Adicione uma sombra na parte inferior */
 .v-app-bar--shadow {
   box-shadow: none !important;
 }
 
-/* Estilo para botão quadrado */
 .v-btn--square:not(.v-btn--disabled):not(.v-btn--text):not(.v-btn--fab) {
   border-radius: 0;
   padding-left: 16px;
   padding-right: 16px;
 }
 
-/* Ajuste o posicionamento dos elementos */
 .v-toolbar__title {
   flex-grow: 1;
 }
