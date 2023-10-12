@@ -2,9 +2,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { v4: uuidv4 } = require('uuid');
 const sqlite3 = require('sqlite3').verbose();
+const path = require('path');
+
+const envs =require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
+const port =  envs.parsed.DEV_API_PORT;
 
 const app = express();
-const port = process.env.PORT || 4000;
 
 app.use(bodyParser.json());
 

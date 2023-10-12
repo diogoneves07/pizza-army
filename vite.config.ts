@@ -6,6 +6,11 @@ import ViteFonts from "unplugin-fonts/vite";
 // Utilities
 import { defineConfig } from "vite";
 import { fileURLToPath, URL } from "node:url";
+import { config } from "dotenv";
+import path from "node:path";
+
+const envs = config({ path: path.resolve(__dirname, ".env") });
+const apiURL = envs?.parsed?.DEV_API_URL;
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -42,7 +47,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       "/api": {
-        target: "http://localhost:4000", // A URL do servidor Node.js
+        target: apiURL,
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
