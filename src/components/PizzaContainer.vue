@@ -2,7 +2,7 @@
   <v-card class="pa-4 container" outlined>
     <div class="title-container">
       <h2 style="font: normal normal normal 32px/40px Bebas Neue">
-        {{ selected?.name || "" }}
+        {{ tasteSelected?.name || "" }}
       </h2>
       <div style="display: flex; align-items: center; gap: 20px">
         <v-rating
@@ -17,11 +17,11 @@
         </span>
       </div>
     </div>
-    <p class="mb-1">{{ description }}</p>
+    <p class="mb-1">{{ tasteSelected?.description || "" }}</p>
     <div class="flex items-center justify-between mb-4">
       Sabor
       <v-select
-        v-model="selectedId"
+        v-model="tasteSelectedId"
         :items="pizzaTastes"
         item-title="name"
         item-value="id"
@@ -70,22 +70,20 @@ import { useRouter, useRoute } from "vue-router";
 const router = useRouter();
 const route = useRoute();
 
-const selectedId = ref("");
-const selected = ref<Product | null>(null);
+const tasteSelectedId = ref("");
+const tasteSelected = ref<Product | null>(null);
 
 const rating = ref(4);
-const description = ref(
-  "Uma pizza clássica italiana com molho de tomate, queijo mussarela, manjericão fresco e azeite de oliva."
-);
 
 const pizzaTastes = ref<Product[]>([]);
 
-watch(selectedId, () => {
-  selected.value = pizzaTastes.value.find(
-    (p) => p.id === selectedId.value
+watch(tasteSelectedId, () => {
+  tasteSelected.value = pizzaTastes.value.find(
+    (p) => p.id === tasteSelectedId.value
   ) as Product;
-  router.push("/" + selectedId.value);
+  router.push("/" + tasteSelectedId.value);
 });
+
 async function loadProducts() {
   try {
     const response = await fetch("/api/produtos");
@@ -94,14 +92,14 @@ async function loadProducts() {
       pizzaTastes.value = data as Product[];
 
       if (route.params.id) {
-        selected.value =
+        tasteSelected.value =
           pizzaTastes.value.find((p) => p.id === route.params.id) || null;
 
-        selectedId.value = selected?.value?.id || "";
+        tasteSelectedId.value = tasteSelected?.value?.id || "";
       }
-      if (!selected.value) {
-        selected.value = pizzaTastes.value[0];
-        selectedId.value = selected.value.id;
+      if (!tasteSelected.value) {
+        tasteSelected.value = pizzaTastes.value[0];
+        tasteSelectedId.value = tasteSelected.value.id;
       }
     } else {
       console.error("Erro ao buscar produtos:", response.statusText);
@@ -112,19 +110,19 @@ async function loadProducts() {
 }
 const quantity = ref(1);
 
-const calculateSubtotal = () => {
+function calculateSubtotal() {
   return quantity.value * 89.9; // Custo de cada pizza
-};
+}
 
-const incrementQuantity = () => {
+function incrementQuantity() {
   quantity.value += 1;
-};
+}
 
-const decrementQuantity = () => {
+function decrementQuantity() {
   if (quantity.value > 1) {
     quantity.value -= 1;
   }
-};
+}
 
 onMounted(() => {
   loadProducts();
