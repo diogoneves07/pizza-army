@@ -78,33 +78,37 @@
         <v-list style="position: relative; left: -170px; top: -30px">
           <v-list-item>
             <v-list-item-title class="headline mb-3 pizza-item">
-              <v-icon color="primary">mdi-pizza</v-icon>
-              Queijos importados</v-list-item-title
-            >
+              <img src="@/assets/imagens/local_pizza_black_24dp.png" />
+
+              Queijos importados
+            </v-list-item-title>
             <v-divider></v-divider>
           </v-list-item>
 
           <v-list-item>
             <v-list-item-title class="headline mb-3 pizza-item">
-              <v-icon color="primary">mdi-pizza</v-icon>
-              Catupiry de primeira qualidade</v-list-item-title
-            >
+              <img src="@/assets/imagens/local_pizza_black_24dp.png" />
+
+              Catupiry de primeira qualidade
+            </v-list-item-title>
             <v-divider></v-divider>
           </v-list-item>
 
           <v-list-item>
             <v-list-item-title class="headline mb-3 pizza-item">
-              <v-icon color="primary">mdi-pizza</v-icon>
-              Bastante recheio</v-list-item-title
-            >
+              <img src="@/assets/imagens/local_pizza_black_24dp.png" />
+
+              Bastante recheio
+            </v-list-item-title>
             <v-divider></v-divider>
           </v-list-item>
 
           <v-list-item>
             <v-list-item-title class="headline mb-3 pizza-item">
-              <v-icon color="primary">mdi-pizza</v-icon>
-              Forno à lenha</v-list-item-title
-            >
+              <img src="@/assets/imagens/local_pizza_black_24dp.png" />
+
+              Forno à lenha
+            </v-list-item-title>
             <v-divider></v-divider>
           </v-list-item>
         </v-list>
@@ -360,5 +364,11 @@ onMounted(() => {
 .pizza-item {
   margin-top: 30px;
   padding: 10px 150px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  img {
+    position: static !important;
+  }
 }
 </style>

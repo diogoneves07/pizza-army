@@ -1,5 +1,9 @@
 <template>
-  <v-app-bar app class="v-app-bar--shadow" style="padding: 10px 15px">
+  <v-app-bar
+    app
+    class="v-app-bar--shadow"
+    style="padding: 10px 15px; position: relative"
+  >
     <v-btn
       v-if="!isScreenSmall"
       icon
@@ -52,10 +56,10 @@
         <strong style="color: #1f6d29">20% OFF</strong>
       </span>
       <v-btn icon class="btn">
-        <v-icon>mdi-account-circle</v-icon>
+        <img src="@/assets/imagens/person_black_24dp (3).png" />
       </v-btn>
       <v-btn icon class="btn">
-        <v-icon>mdi-cart</v-icon>
+        <img src="@/assets/imagens/shopping_cart_black_24dp (2).png" />
       </v-btn>
     </div>
   </v-app-bar>
@@ -121,6 +125,8 @@ onBeforeUnmount(() => {
   align-items: center;
 }
 .btn {
-  font-size: 20px;
+  img {
+    height: 25px;
+  }
 }
 </style>

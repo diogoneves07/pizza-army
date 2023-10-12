@@ -27,7 +27,7 @@
               margin-top: 20px;
             "
           >
-            <v-icon color="red">mdi-checkbox-marked-circle</v-icon>
+            <img src="@/assets/imagens/verified_black_24dp (2).png" />
             {{ review.customerName }}
           </div>
         </v-card-text>

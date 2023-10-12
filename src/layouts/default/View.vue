@@ -1,6 +1,5 @@
 <template>
   <v-app>
-    <AppBar></AppBar>
     <div class="all-center">
       <v-main class="all-center-main">
         <div class="products">
