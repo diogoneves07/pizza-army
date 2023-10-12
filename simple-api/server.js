@@ -11,14 +11,14 @@ const app = express();
 
 app.use(bodyParser.json());
 
-const db = new sqlite3.Database('produtos.db');
+const dbPath = path.resolve(__dirname, '../db/produtos.db');
 
-// Crie a tabela de produtos, se ainda não existir
+const db = new sqlite3.Database(dbPath);
+
 db.serialize(() => {
   db.run('CREATE TABLE IF NOT EXISTS produtos (id TEXT, name TEXT, price REAL, description TEXT)');
 });
 
-// Rota para listar todos os produtos
 app.get('/produtos', (req, res) => {
   db.all('SELECT * FROM produtos', (err, rows) => {
     if (err) {
@@ -28,7 +28,6 @@ app.get('/produtos', (req, res) => {
   });
 });
 
-// Rota para criar um novo produto
 app.post('/produtos', (req, res) => {
   const { name, price, description } = req.body;
   if (!name || !price || !description) {
