@@ -4,6 +4,8 @@ Este projeto foi desenvolvido com o objetivo de participar do desafio de teste t
 
 > As seções a seguir descrevem como executar o projeto. Na última seção, abordarei minhas escolhas de ferramentas e o contexto do meu desenvolvimento neste desafio.
 
+> No desenvolvimento do teste, utilizei o Node.js na versão 16.20.1, no entanto, acredito que funcionará para versões mais recentes do Node.js.
+
 ## Instalando as dependências
 
 Para facilitar a instalação das dependências, foi criado um script que, ao ser executado, fará o download das dependências relacionadas à aplicação e a API:
